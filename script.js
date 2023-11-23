@@ -8,20 +8,30 @@ function pageLoad() {
     ease: "Quint.easeOut",
     duration: 0.5,
   });
-  tl.from(".line", {
-    width: "0%",
-    opacity: "0",
-    stagger: { each: 0.1, from: "start" },
-    ease: "Quint.easeOut",
-    duration: 1,
-  });
-  tl.from("[animation=loading]", {
-    y: "100%",
-    opacity: "0",
-    stagger: { each: 0.1, from: "start" },
-    ease: "Quint.easeOut",
-    duration: 1,
-  });
+
+  // Start both .line and [animation=loading] animations at the same point in the timeline
+  tl.from(
+    ".line",
+    {
+      width: "0%",
+      opacity: "0",
+      stagger: { each: 0.1, from: "start" },
+      ease: "Quint.easeOut",
+      duration: 1,
+    },
+    "startAnimations"
+  ) // Label to mark the start of simultaneous animations
+    .from(
+      "[animation=loading]",
+      {
+        y: "100%",
+        opacity: "0",
+        stagger: { each: 0.1, from: "start" },
+        ease: "Quint.easeOut",
+        duration: 1,
+      },
+      "startAnimations"
+    ); // Use the same label to ensure both animations start at the same time
 }
 pageLoad();
 
