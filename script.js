@@ -52,3 +52,20 @@ function addEventListeners(elements, eventType) {
 
 addEventListeners(inputFields, "focus");
 addEventListeners(inputFields, "blur");
+
+function adjustFontSize() {
+  // Default base font size
+  let baseFontSize = 16; // You can adjust this value as needed
+
+  // Calculate the zoom factor
+  let zoomFactor = window.outerWidth / window.innerWidth;
+
+  // Adjust the font size based on zoom level
+  document.documentElement.style.fontSize = `${baseFontSize * zoomFactor}px`;
+}
+
+// Adjust font size on page load
+adjustFontSize();
+
+// Adjust font size whenever the window is resized
+window.addEventListener("resize", adjustFontSize);
