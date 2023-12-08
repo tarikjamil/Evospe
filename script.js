@@ -55,7 +55,7 @@ addEventListeners(inputFields, "blur");
 
 function adjustFontSize() {
   // Default base font size
-  let baseFontSize = 16; // You can adjust this value as needed
+  let baseFontSize = 1; // You can adjust this value as needed
 
   // Calculate the zoom factor
   let zoomFactor = window.outerWidth / window.innerWidth;
