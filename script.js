@@ -53,14 +53,17 @@ function addEventListeners(elements, eventType) {
 addEventListeners(inputFields, "focus");
 addEventListeners(inputFields, "blur");
 
-let initialWidth = window.innerWidth;
+let initialScale = window.outerWidth / window.innerWidth;
 
-function adjustFontSizeOnZoom() {
-  let currentWidth = window.innerWidth;
-  let zoomLevel = initialWidth / currentWidth; // Adjusted calculation here
+function checkZoom() {
+  let currentScale = window.outerWidth / window.innerWidth;
 
-  // Adjusting the font-size based on zoom level
-  document.documentElement.style.fontSize = `calc((100vw / 1440) * ${zoomLevel})`;
+  // Adjust font size only if the scale (zoom level) changes
+  if (currentScale !== initialScale) {
+    initialScale = currentScale;
+    // Adjust the font size based on the scale
+    document.documentElement.style.fontSize = `calc(100vw / 1440 * ${initialScale})`;
+  }
 }
 
-window.addEventListener("resize", adjustFontSizeOnZoom);
+window.addEventListener("resize", checkZoom);
