@@ -57,7 +57,7 @@ let initialWidth = window.innerWidth;
 
 function adjustFontSizeOnZoom() {
   let currentWidth = window.innerWidth;
-  let zoomLevel = currentWidth / initialWidth;
+  let zoomLevel = initialWidth / currentWidth; // Adjusted calculation here
 
   // Adjusting the font-size based on zoom level
   document.documentElement.style.fontSize = `calc((100vw / 1440) * ${zoomLevel})`;
